@@ -40,8 +40,8 @@ const html = `<!doctype html>
 <ol>
   <li>開啟 <code>https://trade.kapaipai.tw/</code> 任一頁</li>
   <li>按書籤列上的「卡號查詢」，右上角會跳出查詢面板</li>
-  <li>輸入卡號（例如 <code>s10a 073</code>、<code>S10a-073</code>、<code>S-P 201</code>），按 Enter</li>
-  <li>繁中、日文分兩欄列出編號完全符合的卡；點卡片會在新分頁開啟該卡頁面</li>
+  <li>輸入卡號（例如 <code>s10a 073</code>、<code>S10a-073</code>、<code>S-P 201</code>、英文版 <code>MEW 165</code>），按 Enter</li>
+  <li>繁中、日文、英文分三欄列出編號完全符合的卡；點卡片會在新分頁開啟該卡頁面</li>
 </ol>
 <p>再按一次書籤可以隱藏／顯示面板，<code>Esc</code> 也可以關閉。</p>
 <h2>書籤網址</h2>

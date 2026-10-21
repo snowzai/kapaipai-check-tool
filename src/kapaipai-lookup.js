@@ -12,6 +12,7 @@
   const GAMES = [
     { id: 'pkmtw', label: '繁中' },
     { id: 'pkmjp', label: '日文' },
+    { id: 'pkmen', label: '英文', emptyHint: '英文版擴充包代號與繁中/日文不同，例如 MEW 165' },
   ];
 
   if (location.hostname !== HOST) {
@@ -90,7 +91,7 @@
   root.append(h('style', { textContent: `
     :host { all: initial; }
     .panel { position: fixed; top: 12px; right: 12px; z-index: 2147483647;
-      width: min(620px, calc(100vw - 24px)); max-height: calc(100vh - 24px); overflow: auto;
+      width: min(900px, calc(100vw - 24px)); max-height: calc(100vh - 24px); overflow: auto;
       background: #fff; color: #222; border: 1px solid #ddd; border-radius: 10px;
       box-shadow: 0 8px 28px rgba(0,0,0,.18); font: 14px/1.5 -apple-system, "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
     header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px 0; font-weight: 700; }
@@ -101,8 +102,8 @@
     button.go { font: inherit; padding: 7px 14px; border: 0; border-radius: 6px; background: #ffd400; font-weight: 700; cursor: pointer; }
     .status { padding: 0 14px 8px; color: #888; font-size: 12px; min-height: 18px; }
     .status.err { color: #c0392b; }
-    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 14px 14px; }
-    @media (max-width: 520px) { .cols { grid-template-columns: 1fr; } }
+    .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 14px 14px; }
+    @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
     .col h3 { margin: 0 0 6px; font-size: 13px; color: #555; border-bottom: 1px solid #eee; padding-bottom: 4px; }
     .empty { color: #aaa; font-size: 12px; padding: 6px 0; }
     a.item { display: flex; gap: 10px; padding: 6px; border-radius: 6px; text-decoration: none; color: inherit; }
@@ -115,7 +116,7 @@
     .low { color: #d0021b; font-weight: 700; }
   ` }));
 
-  const input = h('input', { placeholder: '卡號，例如 s10a 073', value: storage.get(), autocomplete: 'off' });
+  const input = h('input', { placeholder: '卡號，例如 s10a 073、MEW 165', value: storage.get(), autocomplete: 'off' });
   const status = h('div', { className: 'status' });
   const cols = h('div', { className: 'cols' });
   const close = h('button', { className: 'close', type: 'button', title: '關閉 (Esc)', textContent: '×' });
@@ -146,7 +147,8 @@
       const list = rows.filter((r) => r.game === g.id).sort((a, b) => (a.lowestPrice || Infinity) - (b.lowestPrice || Infinity));
       return h('div', { className: 'col' },
         h('h3', { textContent: g.label + '（' + list.length + '）' }),
-        ...(list.length ? list.map(renderItem) : [h('div', { className: 'empty', textContent: '沒有符合的卡' })]));
+        ...(list.length ? list.map(renderItem) : [h('div', { className: 'empty',
+          textContent: '沒有符合的卡' + (g.emptyHint ? '（' + g.emptyHint + '）' : '') })]));
     }));
   };
 

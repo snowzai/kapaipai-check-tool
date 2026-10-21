@@ -1,6 +1,6 @@
 # 卡拍拍卡號查詢（書籤小工具）
 
-在 trade.kapaipai.tw 上按一下書籤，跳出查詢面板：輸入卡號，只列出編號完全符合的卡，繁中、日文分兩欄顯示。
+在 trade.kapaipai.tw 上按一下書籤，跳出查詢面板：輸入卡號，只列出編號完全符合的卡，繁中、日文、英文分三欄顯示。
 
 > 目前僅支援「寶可夢卡牌（PTCG）」查詢，其他卡牌遊戲的查詢後續再開發。
 
@@ -11,11 +11,12 @@
 ## 使用
 - 開啟 trade.kapaipai.tw 任一頁 → 按書籤 → 輸入卡號 → Enter
 - 支援格式：`s10a 073`、`S10a-073`、`S-P 201`、`S-P-201`（大小寫、前導零都不影響）
+- 英文版的擴充包代號和繁中／日文不同（例如 `MEW 165`、`PAF 232`），同一張卡要用英文代號另外查
 - 每筆顯示：卡名、稀有度、最低價、均價；點卡片在新分頁開啟該卡頁面
 - 再按一次書籤隱藏／顯示，`Esc` 關閉；會記住上次查詢的卡號
 
 ## 運作方式
-- 呼叫卡拍拍自己的 API：`GET /api/card/getFilteredList?game=&name=<卡號>`（`game` 留空＝繁中＋日文一起回傳）
+- 呼叫卡拍拍自己的 API：`GET /api/card/getFilteredList?game=&name=<卡號>`（`game` 留空＝所有遊戲一起回傳，再挑出 `pkmtw` 繁中、`pkmjp` 日文、`pkmen` 英文）
 - 從每張卡的 `rareList` 過濾 `packId` + `packCardId` 符合輸入的項目
   - `packCardId` 有兩種格式：`073`、`S10a-073`，比對前會去掉擴充包前綴與前導零
 - 卡片頁連結：`/cardredirect/<game>?cardkey=&rare=&pack=&packcard=`
