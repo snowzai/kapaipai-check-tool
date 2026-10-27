@@ -21,7 +21,7 @@
 
   if (location.hostname !== HOST) {
     if (confirm('這個書籤要在卡拍拍網站上使用，要前往 trade.kapaipai.tw 嗎？')) {
-      location.href = 'https://' + HOST + '/trade';
+      location.href = 'https://' + HOST + '/explore';
     }
     return;
   }
