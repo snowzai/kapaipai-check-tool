@@ -19,7 +19,7 @@ const html = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>卡拍拍卡號查詢</title>
+<title>卡拍拍卡牌查詢</title>
 <style>
   body { margin: 0; background: #fff; color: #222; font: 16px/1.75 -apple-system, "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
   main { max-width: 720px; margin: 0 auto; padding: 32px 16px; }
@@ -31,17 +31,22 @@ const html = `<!doctype html>
 </head>
 <body>
 <main>
-<h1>卡拍拍卡號查詢</h1>
+<h1>卡拍拍卡牌查詢</h1>
 <h2>安裝</h2>
 <p>把下面這個連結<strong>拖曳到瀏覽器的書籤列</strong>：</p>
-<p><a class="bm" href="${hrefAttr}">卡號查詢</a></p>
+<p><a class="bm" href="${hrefAttr}">卡牌查詢</a></p>
 <blockquote>沒看到書籤列：按 <code>Ctrl+Shift+B</code> 叫出來。拖曳不行的話，新增一個書籤，網址貼上最下面文字框的內容。</blockquote>
 <h2>使用</h2>
 <ol>
   <li>開啟 <code>https://trade.kapaipai.tw/</code> 任一頁</li>
-  <li>按書籤列上的「卡號查詢」，右上角會跳出查詢面板</li>
-  <li>輸入卡號（例如 <code>s10a 073</code>、<code>S10a-073</code>、<code>S-P 201</code>、英文版 <code>MEW 165</code>），按 Enter</li>
-  <li>繁中、日文、英文分三欄列出編號完全符合的卡；點卡片會在新分頁開啟該卡頁面</li>
+  <li>按書籤列上的「卡牌查詢」，右上角會跳出查詢面板</li>
+  <li>輸入卡號或卡名，按 Enter
+    <ul>
+      <li>卡號（例如 <code>s10a 073</code>、<code>S10a-073</code>、<code>S-P 201</code>、英文版 <code>MEW 165</code>）：繁中、日文、英文分三欄列出編號完全符合的卡</li>
+      <li>卡名（例如 <code>超夢ex</code>、<code>ミュウツー</code>、<code>Mewtwo ex</code>）：模糊比對，以表格列出，可點欄位排序、篩選語言、勾選「只顯示名稱完全相同」</li>
+    </ul>
+  </li>
+  <li>點卡片或卡名會在新分頁開啟該卡頁面</li>
 </ol>
 <p>再按一次書籤可以隱藏／顯示面板，<code>Esc</code> 也可以關閉。</p>
 <h2>書籤網址</h2>
